@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  background-color: #FFFFFF;
+  font-family: 'poppins';
+}
+
+
+@layer base {
+  @font-face {
+    font-family: "inter";
+    src: url("/fonts/inter.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "poppins";
+    src: url("/fonts/poppins.woff2") format("woff2");
+  }
+}
