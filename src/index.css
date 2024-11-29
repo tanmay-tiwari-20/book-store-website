@@ -1,6 +1,9 @@
+@import "swiper/css";
+@import "swiper/css/navigation";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 * {
   background-color: #FFFFFF;

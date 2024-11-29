@@ -4,7 +4,7 @@ const Hero = () => {
       <img
         src="/img/hero.png"
         alt="Hero Img"
-        className="h-[60vh] w-[90vw] object-cover"
+        className="h-[65vh] w-[90vw] object-cover"
       />
       <div className="flex items-center gap-5 absolute bg-transparent left-[8%] top-[30%]">
         <img
@@ -19,7 +19,7 @@ const Hero = () => {
       <h1 className="absolute bg-transparent font-bold text-5xl left-[8%] top-[38%] ">
         Up to 10% <br /> On Books
       </h1>
-      <button className="absolute px-10 py-3 bg-[#DB4444] left-[8%] top-[55%] rounded">
+      <button className="absolute px-10 py-3 bg-red-500 hover:bg-red-600 left-[8%] top-[55%] rounded">
         Shop Now!
       </button>
     </div>
