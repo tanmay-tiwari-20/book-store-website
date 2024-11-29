@@ -35,7 +35,7 @@ const Categories = () => {
 
       {/* Browse By Category */}
       <div className="flex items-center justify-between mx-3 mt-6">
-        <h2 className="text-3xl font-bold ml-32 cursor-pointer tracking-wide">
+        <h2 className="text-3xl font-bold ml-32 cursor-pointer tracking-wider font-inter">
           Browse By Category
         </h2>
         <div className="flex items-center gap-4 mr-32">

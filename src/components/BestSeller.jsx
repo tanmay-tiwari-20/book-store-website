@@ -54,7 +54,7 @@ const BestSeller = () => {
         <p className="text-red-500 text-lg font-bold">This Month</p>
       </div>
       <div className="flex items-center justify-between mx-3">
-        <h2 className="text-3xl font-bold ml-32 cursor-pointer tracking-wide underline">
+        <h2 className="text-3xl font-bold ml-32 cursor-pointer tracking-wider underline font-inter">
           Best Sellers
         </h2>
         <div className="mr-32 mb-10">
@@ -107,6 +107,24 @@ const BestSeller = () => {
             </div>
           </div>
         ))}
+      </div>
+
+      <div className="w-[83%] h-[70vh] bg-black mx-auto my-24 flex">
+        <div className="bg-black w-[50%]">
+          <p className="bg-black text-[#00FF66] text-lg mt-20 ml-20">
+            enhance your experience
+          </p>
+          <h1 className="bg-black text-white text-6xl mt-10 ml-20 font-inter font-medium">
+            Best in our <br /> business
+          </h1>
+          <button className=" px-10 py-3 bg-red-500 hover:bg-red-600 text-white rounded mt-10 ml-20">
+            Buy Now!
+          </button>
+        </div>
+        <div className="bg-black w-[50%] flex items-center justify-center rounded-full">
+            <img src="/img/backdrop.png" alt="" className="bg-transparent rounded-full absolute w-[115vh] right-20" />
+            <img src="/img/tree.png" alt="" className="bg-transparent absolute right-52" />
+        </div>
       </div>
     </>
   );
