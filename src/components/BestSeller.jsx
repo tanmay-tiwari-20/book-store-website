@@ -49,16 +49,16 @@ const BestSeller = () => {
   return (
     <>
       {/* Section Header */}
-      <div className="flex items-center p-5 mt-14 ml-20 gap-5 mx-32">
-        <div className="w-6 h-12 bg-red-500 rounded ml-10"></div>
+      <div className="flex items-center gap-4 px-5 sm:px-6 lg:px-36 mt-10">
+        <div className="w-6 h-12 bg-red-500 rounded"></div>
         <p className="text-red-500 text-lg font-bold">This Month</p>
       </div>
-      <div className="flex items-center justify-between mx-3">
-        <h2 className="text-3xl font-bold ml-32 cursor-pointer tracking-wider underline font-inter">
+      <div className="flex flex-wrap justify-between items-center gap-4 px-5 sm:px-6 lg:pl-36 mt-6">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-wider cursor-pointer font-inter">
           Best Sellers
         </h2>
-        <div className="mr-32 mb-10">
-          <button className="px-8 py-2 bg-red-500 hover:bg-red-600 rounded text-white">
+        <div className="mt-4 sm:mt-0 mr-0 lg:mr-28">
+          <button className="px-6 py-2 text-sm sm:text-base bg-red-500 hover:bg-red-600 rounded text-white">
             View All
           </button>
         </div>
@@ -109,21 +109,31 @@ const BestSeller = () => {
         ))}
       </div>
 
-      <div className="w-[83%] h-[70vh] bg-black mx-auto my-24 flex">
-        <div className="bg-black w-[50%]">
-          <p className="bg-black text-[#00FF66] text-lg mt-20 ml-20">
+      <div className="w-[90%] max-w-[1200px] h-auto lg:h-[70vh] bg-black mx-auto my-24 flex flex-col lg:flex-row items-center lg:items-stretch">
+        <div className="bg-black w-full lg:w-[50%] px-5 lg:px-0">
+          <p className="bg-black text-[#00FF66] text-lg mt-10 lg:mt-20 ml-0 lg:ml-20 text-center lg:text-left">
             enhance your experience
           </p>
-          <h1 className="bg-black text-white text-6xl mt-10 ml-20 font-inter font-medium">
+          <h1 className="bg-black text-white text-4xl lg:text-6xl mt-5 lg:mt-10 ml-0 lg:ml-20 font-inter font-medium text-center lg:text-left">
             Best in our <br /> business
           </h1>
-          <button className=" px-10 py-3 bg-red-500 hover:bg-red-600 text-white rounded mt-10 ml-20">
-            Buy Now!
-          </button>
+          <div className="flex justify-center lg:justify-start bg-black mb-10">
+            <button className="px-10 py-3 bg-red-500 hover:bg-red-600 text-white rounded mt-10 lg:mt-10 ml-0 lg:ml-20">
+              Buy Now!
+            </button>
+          </div>
         </div>
-        <div className="bg-black w-[50%] flex items-center justify-center rounded-full">
-            <img src="/img/backdrop.png" alt="" className="bg-transparent rounded-full absolute w-[115vh] right-20" />
-            <img src="/img/tree.png" alt="" className="bg-transparent absolute right-52" />
+        <div className="bg-black w-full lg:w-[50%] flex items-center justify-center relative overflow-hidden">
+          <img
+            src="/img/backdrop.png"
+            alt=""
+            className="bg-transparent rounded-full absolute w-[80vw] lg:w-[115vh] right-10 lg:right-20"
+          />
+          <img
+            src="/img/tree.png"
+            alt=""
+            className="bg-transparent absolute right-24 lg:right-52 w-1/2 lg:w-auto"
+          />
         </div>
       </div>
     </>

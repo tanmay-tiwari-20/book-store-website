@@ -6,24 +6,30 @@ const NewReleases = () => {
   return (
     <div className="px-10 py-10">
       {/* Header */}
-      <div className="w-6 h-12 bg-red-500 rounded ml-10"></div>
+      <div className="w-6 h-12 bg-red-500 rounded ml-0 lg:ml-10"></div>
 
-      {/* Timer */}
-      <div className="flex items-center justify-between mt-10 gap-8 mb-8">
-        <h2 className="text-4xl tracking-wider font-bold underline ml-10 cursor-pointer font-inter">
+      <div className="flex flex-wrap items-center justify-between gap-6 md:gap-8 lg:gap-10 mt-10 mb-8 lg:mx-10">
+        {/* Header */}
+        <h2 className="text-2xl sm:text-3xl md:text-4xl tracking-wider font-bold underline text-center md:text-left cursor-pointer font-inter">
           New Releases
         </h2>
-        <div className="flex items-center gap-10">
+
+        {/* Timer Units */}
+        <div className="flex items-center justify-center gap-4 sm:gap-6 lg:gap-10">
           {["Days", "Hours", "Minutes", "Seconds"].map((unit, index) => (
             <div key={index} className="text-center">
-              <div className="text-sm text-gray-600">{unit}</div>
-              <div className="text-3xl font-bold">03</div>
+              <div className="text-xs sm:text-sm text-gray-600">{unit}</div>
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold">
+                03
+              </div>
             </div>
           ))}
         </div>
-        <div className="flex items-center gap-4 mr-32">
-          <HiArrowSmallLeft className="bg-[#f5f5f5] p-2 text-4xl rounded-full cursor-pointer" />
-          <HiArrowSmallRight className="bg-[#f5f5f5] p-2 text-4xl rounded-full cursor-pointer" />
+
+        {/* Navigation Arrows */}
+        <div className="flex items-center gap-2 sm:gap-4">
+          <HiArrowSmallLeft className="bg-[#f5f5f5] p-1 sm:p-2 text-2xl sm:text-4xl rounded-full cursor-pointer" />
+          <HiArrowSmallRight className="bg-[#f5f5f5] p-1 sm:p-2 text-2xl sm:text-4xl rounded-full cursor-pointer" />
         </div>
       </div>
 

@@ -28,19 +28,19 @@ const Categories = () => {
   return (
     <>
       {/* Section Header */}
-      <div className="flex items-center px-5 mt-10 ml-20 gap-5 mx-32">
-        <div className="w-6 h-12 bg-red-500 rounded ml-10"></div>
+      <div className="flex items-center gap-4 px-5 sm:px-6 lg:px-36 mt-10">
+        <div className="w-6 h-12 bg-red-500 rounded"></div>
         <p className="text-red-500 text-lg font-bold">Categories</p>
       </div>
 
       {/* Browse By Category */}
-      <div className="flex items-center justify-between mx-3 mt-6">
-        <h2 className="text-3xl font-bold ml-32 cursor-pointer tracking-wider font-inter">
+      <div className="flex flex-wrap justify-between items-center gap-4 px-5 sm:px-6 lg:px-36 mt-6">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-wider cursor-pointer font-inter">
           Browse By Category
         </h2>
-        <div className="flex items-center gap-4 mr-32">
-          <HiArrowSmallLeft className="bg-[#f5f5f5] p-2 text-4xl rounded-full cursor-pointer" />
-          <HiArrowSmallRight className="bg-[#f5f5f5] p-2 text-4xl rounded-full cursor-pointer" />
+        <div className="flex items-center gap-2 sm:gap-4">
+          <HiArrowSmallLeft className="bg-[#f5f5f5] p-2 text-3xl sm:text-4xl rounded-full cursor-pointer" />
+          <HiArrowSmallRight className="bg-[#f5f5f5] p-2 text-3xl sm:text-4xl rounded-full cursor-pointer" />
         </div>
       </div>
 
