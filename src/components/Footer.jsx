@@ -14,7 +14,7 @@ const Footer = () => {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="px-3 py-2 w-full sm:w-auto rounded outline-none text-blue-500 bg-blue-500"
+                className="px-3 py-2 w-full sm:w-auto rounded outline-none bg-blue-500"
               />
               <button className="px-4 bg-blue-500 text-white rounded-r-md">
                 <img
