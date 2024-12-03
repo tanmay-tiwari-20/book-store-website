@@ -38,7 +38,7 @@ const NewReleases = () => {
         {Array(4)
           .fill(0)
           .map((_, index) => (
-            <div key={index} className="ml-10">
+            <div key={index} className="">
               <div className="relative bg-[#f5f5f5] rounded pt-8">
                 {/* Discount Badge */}
                 <div className="absolute top-2 left-2 bg-red-500 text-white text-sm px-2 py-1 rounded">
