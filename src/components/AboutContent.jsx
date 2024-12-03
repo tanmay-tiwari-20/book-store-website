@@ -1,3 +1,4 @@
+import { FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import Footer from "./Footer";
 import Trust from "./Trust";
 
@@ -108,7 +109,63 @@ const AboutContent = () => {
       </div>
 
       {/* Spacer Section */}
-      <div className="px-5 sm:px-10 lg:px-28 mx-auto h-screen"></div>
+      <div className="px-5 sm:px-10 lg:px-28 mx-auto py-10">
+        <h2 className="text-center text-3xl lg:text-4xl font-bold mb-10">
+          Meet Our Team
+        </h2>
+        <div className="flex flex-col lg:flex-row gap-10 justify-center items-center">
+          {[
+            {
+              name: "Tom Cruise",
+              title: "Founder & Chairman",
+              image: "/img/person.png",
+            },
+            {
+              name: "Emma Watson",
+              title: "Managing Director",
+              image: "/img/person.png",
+            },
+            {
+              name: "Will Smith",
+              title: "Product Designer",
+              image: "/img/person.png",
+            },
+          ].map((member, index) => (
+            <div
+              key={index}
+              className="flex flex-col space-y-4 items-start" // Aligned to start (left)
+            >
+              {/* Card for Image */}
+              <div className="w-96 pt-5 bg-[#F5F5F5] rounded overflow-hidden flex justify-center">
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="object-cover bg-[#F5F5F5]"
+                />
+              </div>
+              {/* Outside Content */}
+              <div className="text-left"> {/* Text aligned to the left */}
+                <h3 className="text-3xl font-bold font-inter tracking-wider">
+                  {member.name}
+                </h3>
+                <p className="text-sm">{member.title}</p>
+                <div className="flex space-x-4 mt-4">
+                  <a href="#" className="hover:text-blue-500">
+                    <FaTwitter size={20} />
+                  </a>
+                  <a href="#" className="hover:text-pink-500">
+                    <FaInstagram size={20} />
+                  </a>
+                  <a href="#" className="hover:text-blue-700">
+                    <FaLinkedin size={20} />
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
 
       <Trust />
       <Footer />
