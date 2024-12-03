@@ -109,7 +109,7 @@ const AboutContent = () => {
       </div>
 
       {/* Spacer Section */}
-      <div className="px-5 sm:px-10 lg:px-28 mx-auto py-10">
+      <div className="px-10 lg:px-28 mx-auto py-10">
         <h2 className="text-center text-3xl lg:text-4xl font-bold mb-10">
           Meet Our Team
         </h2>
