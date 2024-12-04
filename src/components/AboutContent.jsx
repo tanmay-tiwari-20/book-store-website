@@ -1,5 +1,4 @@
 import { FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
-import Footer from "./Footer";
 import Trust from "./Trust";
 
 const AboutContent = () => {
@@ -167,7 +166,6 @@ const AboutContent = () => {
       </div>
 
       <Trust />
-      <Footer />
     </>
   );
 };

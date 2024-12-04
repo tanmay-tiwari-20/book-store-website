@@ -7,6 +7,14 @@ import {
 } from "react-icons/fa";
 
 const Footer = () => {
+  // Function to scroll to the top of the page
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <footer className="bg-blue-500 text-white px-4 sm:px-6 lg:px-28 py-8">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 bg-blue-500">
@@ -103,7 +111,10 @@ const Footer = () => {
             <FaLinkedinIn size={24} className="bg-blue-500" />
           </a>
         </div>
-        <button className="bg-white text-blue-500 p-4 rounded-full">
+        <button
+          onClick={scrollToTop}
+          className="bg-white text-blue-500 p-4 rounded-full transition"
+        >
           <FaArrowUp />
         </button>
       </div>

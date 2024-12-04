@@ -1,4 +1,5 @@
 import AboutContent from "../components/AboutContent"
+import Footer from "../components/Footer"
 import Header from "../components/Header"
 import TopHeader from "../components/TopHeader"
 
@@ -8,7 +9,7 @@ const AboutPage = () => {
         <TopHeader />
         <Header />
         <AboutContent />
-        {/* <Footer /> */}
+        <Footer />
     </div>
   )
 }

@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { FiUser } from "react-icons/fi";
-import { IoIosHeartEmpty, IoIosSearch } from "react-icons/io";
+import { IoIosClose, IoIosHeartEmpty, IoIosSearch } from "react-icons/io";
 import { IoCartOutline, IoMenuOutline } from "react-icons/io5";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const isHomePage = location.pathname === "/";
   const isAuthPage = location.pathname === "/auth";
   const [menuOpen, setMenuOpen] = useState(false);
@@ -16,10 +17,17 @@ const Header = () => {
 
   const closeMenu = () => setMenuOpen(false);
 
+  const handleLogoClick = () => {
+    navigate("/");
+  };
+
   return (
     <nav className="py-4 px-4 sm:px-8 lg:px-14 flex items-center justify-between border-b-2 relative z-20">
       {/* Logo Section */}
-      <div className="flex items-center gap-4">
+      <div
+        className="flex items-center gap-4 cursor-pointer"
+        onClick={handleLogoClick}
+      >
         {isHomePage ? (
           <>
             <img
@@ -32,7 +40,9 @@ const Header = () => {
             </h1>
           </>
         ) : (
-          <h1 className="font-bold text-lg sm:text-2xl font-inter">Exclusive</h1>
+          <h1 className="font-bold text-lg sm:text-2xl font-inter">
+            Exclusive
+          </h1>
         )}
       </div>
 
@@ -90,7 +100,7 @@ const Header = () => {
           className="absolute top-4 right-4 text-2xl focus:outline-none"
           onClick={closeMenu}
         >
-          ✕
+          <IoIosClose className="text-4xl" />
         </button>
         <nav className="flex flex-col items-center gap-6 text-lg">
           <Link
@@ -146,9 +156,13 @@ const Header = () => {
         </div>
         {!isAuthPage && (
           <div className="flex items-center gap-4">
-            <IoIosHeartEmpty className="text-2xl lg:text-3xl cursor-pointer" />
+            <Link to="/wishlist">
+              <IoIosHeartEmpty className="text-2xl lg:text-3xl" />
+            </Link>
             <IoCartOutline className="text-2xl lg:text-3xl cursor-pointer" />
-            {!isHomePage && <FiUser className="text-2xl lg:text-3xl cursor-pointer" />}
+            {!isHomePage && (
+              <FiUser className="text-2xl lg:text-3xl cursor-pointer" />
+            )}
           </div>
         )}
       </div>
