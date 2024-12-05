@@ -40,9 +40,7 @@ const Header = () => {
             </h1>
           </>
         ) : (
-          <h1 className="font-bold text-lg sm:text-2xl font-inter">
-            Exclusive
-          </h1>
+          <h1 className="font-bold text-lg sm:text-2xl font-inter">Exclusive</h1>
         )}
       </div>
 
@@ -129,6 +127,31 @@ const Header = () => {
             onClick={closeMenu}
           >
             About
+          </Link>
+          {/* Wishlist, Cart, and Profile Links */}
+          <Link
+            to="/wishlist"
+            className="flex items-center gap-2 hover:underline"
+            onClick={closeMenu}
+          >
+            <IoIosHeartEmpty className="text-2xl" />
+            Wishlist
+          </Link>
+          <Link
+            to="/cart"
+            className="flex items-center gap-2 hover:underline"
+            onClick={closeMenu}
+          >
+            <IoCartOutline className="text-2xl" />
+            Cart
+          </Link>
+          <Link
+            to="/profile"
+            className="flex items-center gap-2 hover:underline"
+            onClick={closeMenu}
+          >
+            <FiUser className="text-2xl" />
+            Profile
           </Link>
           <Link
             to="/auth"
