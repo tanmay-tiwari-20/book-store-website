@@ -65,7 +65,7 @@ const BestSeller = () => {
       </div>
 
       {/* Best Sellers Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mx-32 mt-5 mb-20">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mx-14 lg:mx-32 mt-5 mb-20">
         {books.map((book) => (
           <div key={book.id} className="relative bg-[#f5f5f5] rounded pt-8">
             {/* Discount Badge */}
