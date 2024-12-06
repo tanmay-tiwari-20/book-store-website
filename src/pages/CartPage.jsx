@@ -1,6 +1,7 @@
 import CartContent from "../components/CartContent"
 import Header from "../components/Header"
 import TopHeader from "../components/TopHeader"
+import Footer from "../components/Footer"
 
 const CartPage = () => {
   return (
@@ -8,6 +9,7 @@ const CartPage = () => {
         <TopHeader />
         <Header />
         <CartContent />
+        <Footer />
     </div>
   )
 }
