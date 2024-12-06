@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage"
 import ContactPage from "./pages/ContactPage"
 import AboutPage from "./pages/AboutPage"
 import WishlistPage from "./pages/WishlistPage"
+import CartPage from "./pages/CartPage"
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/wishlist" element={<WishlistPage />} />
+        <Route path="/cart" element={<CartPage />} />
       </Routes>
     </main>
   )

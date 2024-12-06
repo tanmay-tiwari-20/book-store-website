@@ -1,6 +1,7 @@
 import Header from "../components/Header";
 import TopHeader from "../components/TopHeader";
 import WishlistContent from "../components/WishlistContent";
+import Footer from "../components/Footer";
 
 const WishlistPage = () => {
   return (
@@ -8,6 +9,7 @@ const WishlistPage = () => {
       <TopHeader />
       <Header />
       <WishlistContent />
+      <Footer />
     </div>
   );
 };

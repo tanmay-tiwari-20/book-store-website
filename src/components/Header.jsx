@@ -40,7 +40,9 @@ const Header = () => {
             </h1>
           </>
         ) : (
-          <h1 className="font-bold text-lg sm:text-2xl font-inter">Exclusive</h1>
+          <h1 className="font-bold text-lg sm:text-2xl font-inter">
+            Exclusive
+          </h1>
         )}
       </div>
 
@@ -182,9 +184,13 @@ const Header = () => {
             <Link to="/wishlist">
               <IoIosHeartEmpty className="text-2xl lg:text-3xl" />
             </Link>
-            <IoCartOutline className="text-2xl lg:text-3xl cursor-pointer" />
+            <Link to="/cart">
+              <IoCartOutline className="text-2xl lg:text-3xl cursor-pointer" />
+            </Link>
             {!isHomePage && (
-              <FiUser className="text-2xl lg:text-3xl cursor-pointer" />
+              <Link to="/profile">
+                <FiUser className="text-2xl lg:text-3xl cursor-pointer" />
+              </Link>
             )}
           </div>
         )}

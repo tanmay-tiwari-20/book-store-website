@@ -123,16 +123,16 @@ const BestSeller = () => {
             </button>
           </div>
         </div>
-        <div className="bg-black w-full lg:w-[50%] flex items-center justify-center relative overflow-hidden">
+        <div className="bg-black w-full flex items-center justify-center relative overflow-hidden">
           <img
             src="/img/backdrop.png"
-            alt=""
-            className="bg-transparent rounded-full absolute w-[80vw] lg:w-[115vh] right-10 lg:right-20"
+            alt="Backdrop Image"
+            className="bg-transparent rounded-full absolute w-[115vw] right-10 "
           />
           <img
             src="/img/tree.png"
-            alt=""
-            className="bg-transparent absolute right-24 lg:right-52 w-1/2 lg:w-auto"
+            alt="Tree"
+            className="bg-transparent absolute right-28 w-1/2 lg:w-auto"
           />
         </div>
       </div>
