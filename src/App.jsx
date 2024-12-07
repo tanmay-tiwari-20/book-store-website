@@ -7,6 +7,8 @@ import WishlistPage from "./pages/WishlistPage";
 import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import ProfilePage from "./pages/ProfilePage";
+import ErrorPage from "./pages/ErrorPage";
+import DetailsPage from "./pages/DetailsPage";
 
 const App = () => {
   return (
@@ -20,6 +22,8 @@ const App = () => {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/details" element={<DetailsPage />} />
+        <Route path="/error" element={<ErrorPage />} />
       </Routes>
     </main>
   );
