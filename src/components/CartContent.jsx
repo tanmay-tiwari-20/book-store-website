@@ -27,7 +27,7 @@ const CartContent = () => {
                 <td className="py-4 flex items-center">
                   <button className="text-red-500 mr-4">&#10006;</button>
                   <img
-                    src="https://via.placeholder.com/40"
+                    src="/img/business.png"
                     alt="Business Management"
                     className="w-10 h-10 object-cover mr-4"
                   />
@@ -49,7 +49,7 @@ const CartContent = () => {
                 <td className="py-4 flex items-center">
                   <button className="text-red-500 mr-4">&#10006;</button>
                   <img
-                    src="https://via.placeholder.com/40"
+                    src="/img/industry.png"
                     alt="Cost Accounting"
                     className="w-10 h-10 object-cover mr-4"
                   />
@@ -73,7 +73,7 @@ const CartContent = () => {
           <div className="md:hidden">
             <div className="border-b py-4 flex items-center justify-between">
               <img
-                src="https://via.placeholder.com/40"
+                src="/img/business.png"
                 alt="Business Management"
                 className="w-10 h-10 object-cover mr-4"
               />
@@ -97,7 +97,7 @@ const CartContent = () => {
 
             <div className="border-b py-4 flex items-center justify-between">
               <img
-                src="https://via.placeholder.com/40"
+                src="/img/industry.png"
                 alt="Cost Accounting"
                 className="w-10 h-10 object-cover mr-4"
               />
@@ -162,9 +162,11 @@ const CartContent = () => {
               <span>Total:</span>
               <span>₹1750</span>
             </div>
-            <button className="bg-red-500 text-white w-full mt-4 py-2 rounded hover:bg-red-600">
-              Proceed to checkout
-            </button>
+            <Link to="/checkout">
+              <button className="bg-red-500 text-white w-full mt-4 py-2 rounded hover:bg-red-600">
+                Proceed to checkout
+              </button>
+            </Link>
           </div>
         </div>
       </div>

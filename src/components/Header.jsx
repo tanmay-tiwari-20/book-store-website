@@ -181,15 +181,27 @@ const Header = () => {
         </div>
         {!isAuthPage && (
           <div className="flex items-center gap-4">
-            <Link to="/wishlist">
-              <IoIosHeartEmpty className="text-2xl lg:text-3xl" />
+            <Link to="/wishlist" className={`relative`}>
+              <IoIosHeartEmpty
+                className={`text-2xl lg:text-3xl ${
+                  isActive("/wishlist") ? "bg-red-500 text-white rounded-full p-2" : ""
+                }`}
+              />
             </Link>
-            <Link to="/cart">
-              <IoCartOutline className="text-2xl lg:text-3xl cursor-pointer" />
+            <Link to="/cart" className={`relative`}>
+              <IoCartOutline
+                className={`text-2xl lg:text-3xl ${
+                  isActive("/cart") ? "bg-red-500 text-white rounded-full p-2" : ""
+                }`}
+              />
             </Link>
             {!isHomePage && (
-              <Link to="/profile">
-                <FiUser className="text-2xl lg:text-3xl cursor-pointer" />
+              <Link to="/profile" className={`relative`}>
+                <FiUser
+                  className={`text-2xl lg:text-3xl ${
+                    isActive("/profile") ? "bg-red-500 text-white rounded-full p-2" : ""
+                  }`}
+                />
               </Link>
             )}
           </div>
