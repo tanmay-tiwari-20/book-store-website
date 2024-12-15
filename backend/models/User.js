@@ -16,12 +16,32 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  isAdmin: {
+    type: Boolean,
+    default: false, // By default, a user is not an admin
+  },
   resetPasswordToken: String,
   resetPasswordExpire: Date,
   createdAt: {
     type: Date,
     default: Date.now,
   },
+});
+
+// Middleware to ensure only one admin exists
+userSchema.pre("save", async function (next) {
+  if (this.isAdmin) {
+    // Check if another admin already exists
+    const existingAdmin = await mongoose
+      .model("User")
+      .findOne({ isAdmin: true, _id: { $ne: this._id } });
+    if (existingAdmin) {
+      const error = new Error("Only one admin is allowed.");
+      error.code = 400; // Bad request
+      return next(error);
+    }
+  }
+  next();
 });
 
 // Hash the password before saving the user

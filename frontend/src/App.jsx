@@ -9,6 +9,8 @@ import CheckoutPage from "./pages/CheckoutPage";
 import ProfilePage from "./pages/ProfilePage";
 import ErrorPage from "./pages/ErrorPage";
 import DetailsPage from "./pages/DetailsPage";
+import AdminLogin from "./components/AdminLogin";
+import AdminDashboard from "./pages/AdminDashboard";
 
 const App = () => {
   return (
@@ -23,6 +25,8 @@ const App = () => {
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/details" element={<DetailsPage />} />
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </main>

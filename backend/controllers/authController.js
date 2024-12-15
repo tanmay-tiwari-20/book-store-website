@@ -22,16 +22,28 @@ exports.signup = async (req, res) => {
 
 // Login
 exports.login = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, isAdmin } = req.body;
 
   try {
-    const user = await User.findOne({ email });
+    let user;
 
-    if (!user || !(await user.matchPassword(password))) {
-      return res.status(401).json({ message: "Invalid credentials" });
+    if (isAdmin) {
+      // Admin login
+      user = await Admin.findOne({ email });
+      if (!user || !(await user.matchPassword(password))) {
+        return res.status(401).json({ message: "Invalid admin credentials" });
+      }
+    } else {
+      // Regular user login
+      user = await User.findOne({ email });
+      if (!user || !(await user.matchPassword(password))) {
+        return res.status(401).json({ message: "Invalid user credentials" });
+      }
     }
 
-    res.status(200).json({ message: "User logged in successfully" });
+    // Return success response
+    const role = isAdmin ? "Admin" : "User";
+    res.status(200).json({ message: `${role} logged in successfully` });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
