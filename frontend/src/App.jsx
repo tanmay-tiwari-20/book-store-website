@@ -11,6 +11,8 @@ import ErrorPage from "./pages/ErrorPage";
 import DetailsPage from "./pages/DetailsPage";
 import AdminLogin from "./components/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
+import ProductPage from "./pages/ProductPage";
+import OrdersPage from "./pages/OrdersPage";
 
 const App = () => {
   return (
@@ -27,6 +29,8 @@ const App = () => {
         <Route path="/details" element={<DetailsPage />} />
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        <Route path="/admin/products" element={<ProductPage />} />
+        <Route path="/admin/orders" element={<OrdersPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </main>

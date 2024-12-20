@@ -1,154 +1,147 @@
-import { Link } from "react-router-dom"; // For navigation between different dashboard sections
+import { Link } from "react-router-dom";
 import {
   FaProductHunt,
   FaMoneyBillWave,
   FaUserCircle,
   FaClipboardList,
-} from "react-icons/fa"; // Importing icons for navigation
+} from "react-icons/fa";
+import { Bar, Line } from "react-chartjs-2"; // Importing chart components
+import { Chart as ChartJS, registerables } from "chart.js"; // ChartJS registration
+ChartJS.register(...registerables);
 
 const AdminDashboard = () => {
+  const sidebarLinks = [
+    { to: "/admin/products", icon: <FaProductHunt />, label: "Products" },
+    { to: "/admin/orders", icon: <FaClipboardList />, label: "Orders" },
+    { to: "/admin/customers", icon: <FaUserCircle />, label: "Customers" },
+    { to: "/admin/payments", icon: <FaMoneyBillWave />, label: "Payments" },
+  ];
+
+  const dashboardCards = [
+    {
+      title: "Manage Products",
+      description: "Add, update, or remove products from the store.",
+      to: "/admin/products",
+      color: "bg-[#47B486]",
+    },
+    {
+      title: "Manage Orders",
+      description: "View, update, or manage orders placed by customers.",
+      to: "/admin/orders",
+      color: "bg-[#E2B93B]",
+    },
+    {
+      title: "Manage Customers",
+      description: "View and manage customer information and profiles.",
+      to: "/admin/customers",
+      color: "bg-[#D37643]",
+    },
+    {
+      title: "Manage Payments",
+      description: "View and track payments for orders.",
+      to: "/admin/payments",
+      color: "bg-[#DB4444]",
+    },
+  ];
+
+  const statsCards = [
+    { title: "Total Products", value: 235, color: "bg-[#E2B93B]" },
+    { title: "Total Orders", value: 1435, color: "bg-[#47B486]" },
+    { title: "Total Revenue", value: "$12,345", color: "bg-[#DB4444]" },
+  ];
+
+  const barData = {
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+    datasets: [
+      {
+        label: "Orders",
+        data: [300, 500, 800, 600, 700, 1000],
+        backgroundColor: "#47B486",
+      },
+    ],
+  };
+
+  const lineData = {
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+    datasets: [
+      {
+        label: "Revenue",
+        data: [1000, 1500, 2000, 2500, 3000, 3500],
+        borderColor: "#DB4444",
+        backgroundColor: "rgba(219, 68, 68, 0.2)",
+        tension: 0.4,
+      },
+    ],
+  };
+
   return (
-    <div className="min-h-screen bg-white text-white flex">
-      {/* Sidebar with new color */}
-      <div className="w-64 bg-[#EB5757] p-6">
-        <h1 className="text-2xl font-bold mb-8 text-white bg-[#EB5757]">
-          Admin Dashboard
-        </h1>
+    <div className="min-h-screen flex bg-[#F7F9FC]">
+      {/* Sidebar */}
+      <div className="w-64 bg-[#2D3748] p-6">
+        <h1 className="text-2xl font-bold mb-8 text-white">Admin Dashboard</h1>
         <nav>
           <ul>
-            <li className="bg-[#EB5757]">
-              <Link
-                to="/admin/products"
-                className="flex items-center text-white p-3 hover:bg-[#DB4444] rounded transition-all bg-[#EB5757]"
-              >
-                <FaProductHunt className="mr-3 bg-[#EB5757]" /> Products
-              </Link>
-            </li>
-            <li className="bg-[#EB5757]">
-              <Link
-                to="/admin/orders"
-                className="flex items-center text-white p-3 hover:bg-[#DB4444] rounded transition-all bg-[#EB5757]"
-              >
-                <FaClipboardList className="mr-3 bg-[#EB5757]" /> Orders
-              </Link>
-            </li>
-            <li className="bg-[#EB5757]">
-              <Link
-                to="/admin/customers"
-                className="flex items-center text-white p-3 hover:bg-[#DB4444] rounded transition-all bg-[#EB5757]"
-              >
-                <FaUserCircle className="mr-3 bg-[#EB5757]" /> Customers
-              </Link>
-            </li>
-            <li className="bg-[#EB5757]">
-              <Link
-                to="/admin/payments"
-                className="flex items-center text-white p-3 hover:bg-[#DB4444] rounded transition-all bg-[#EB5757]"
-              >
-                <FaMoneyBillWave className="mr-3 bg-[#EB5757]" /> Payments
-              </Link>
-            </li>
+            {sidebarLinks.map(({ to, icon, label }) => (
+              <li key={to} className="mb-4">
+                <Link
+                  to={to}
+                  className="flex items-center text-white p-3 hover:bg-[#1A202C] rounded transition-all"
+                >
+                  {icon}
+                  <span className="ml-3">{label}</span>
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
       </div>
 
-      {/* Main Content Area */}
-      <div className="flex-1 p-8 bg-white">
-        <h2 className="text-3xl font-semibold mb-4 text-[#363738]">
+      {/* Main Content */}
+      <div className="flex-1 p-8">
+        <h2 className="text-3xl font-semibold mb-6 text-[#2D3748]">
           Welcome to the Admin Dashboard
         </h2>
 
         {/* Dashboard Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Card for Products */}
-          <div className="bg-[#47B486] p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-            <h3 className="text-xl font-semibold mb-4 text-white bg-[#47B486]">
-              Manage Products
-            </h3>
-            <p className="text-white mb-4 bg-[#47B486]">
-              Add, update, or remove products from the store.
-            </p>
-            <Link
-              to="/admin/products"
-              className="mt-4 inline-block transition-colors bg-[#47B486]"
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          {dashboardCards.map(({ title, description, to, color }) => (
+            <div
+              key={title}
+              className={`${color} p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105`}
             >
-              Go to Products
-            </Link>
-          </div>
-
-          {/* Card for Orders */}
-          <div className="bg-[#E2B93B] p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-            <h3 className="text-xl font-semibold mb-4 text-[#363738] bg-[#E2B93B]">
-              Manage Orders
-            </h3>
-            <p className="text-[#363738] mb-4 bg-[#E2B93B]">
-              View, update, or manage orders placed by customers.
-            </p>
-            <Link
-              to="/admin/orders"
-              className="bg-[#E2B93B] mt-4 inline-block transition-colors"
-            >
-              Go to Orders
-            </Link>
-          </div>
-
-          {/* Card for Customers */}
-          <div className="bg-[#D37643] p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-            <h3 className="text-xl font-semibold mb-4 text-white bg-[#D37643]">
-              Manage Customers
-            </h3>
-            <p className="text-white mb-4 bg-[#D37643]">
-              View and manage customer information and profiles.
-            </p>
-            <Link
-              to="/admin/customers"
-              className="bg-[#D37643] mt-4 inline-block transition-colors"
-            >
-              Go to Customers
-            </Link>
-          </div>
-
-          {/* Card for Payments */}
-          <div className="bg-[#DB4444] p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-            <h3 className="text-xl font-semibold mb-4 text-white bg-[#DB4444]">
-              Manage Payments
-            </h3>
-            <p className="text-white mb-4 bg-[#DB4444]">
-              View and track payments for orders.
-            </p>
-            <Link
-              to="/admin/payments"
-              className="bg-[#DB4444] mt-4 inline-block transition-colors"
-            >
-              Go to Payments
-            </Link>
-          </div>
+              <h3 className="text-xl font-semibold mb-4 text-white">{title}</h3>
+              <p className="text-white mb-4">{description}</p>
+              <Link to={to} className="underline text-white">
+                Go to {title.split(" ")[1]}
+              </Link>
+            </div>
+          ))}
         </div>
 
-        {/* Summary Stats Section */}
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Stats Card 1 */}
-          <div className="bg-[#E2B93B] p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
-            <h3 className="text-2xl font-semibold text-[#363738] mb-4 bg-[#E2B93B]">
-              Total Products
-            </h3>
-            <p className="text-[#363738] text-3xl font-bold bg-[#E2B93B]">235</p>
-          </div>
+        {/* Summary Stats */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          {statsCards.map(({ title, value, color }) => (
+            <div
+              key={title}
+              className={`${color} p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300`}
+            >
+              <h3 className="text-2xl font-semibold text-white mb-4">
+                {title}
+              </h3>
+              <p className="text-white text-3xl font-bold">{value}</p>
+            </div>
+          ))}
+        </div>
 
-          {/* Stats Card 2 */}
-          <div className="bg-[#47B486] p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
-            <h3 className="text-2xl font-semibold text-[#363738] mb-4 bg-[#47B486]">
-              Total Orders
-            </h3>
-            <p className="text-[#363738] text-3xl font-bold bg-[#47B486]">1,435</p>
+        {/* Graph Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="bg-white p-6 rounded-lg shadow-lg">
+            <h3 className="text-lg font-semibold mb-4">Order Trends</h3>
+            <Bar data={barData} />
           </div>
-
-          {/* Stats Card 3 */}
-          <div className="bg-[#DB4444] p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
-            <h3 className="text-2xl font-semibold text-[#363738] mb-4 bg-[#DB4444]">
-              Total Revenue
-            </h3>
-            <p className="text-[#363738] text-3xl font-bold bg-[#DB4444]">$12,345</p>
+          <div className="bg-white p-6 rounded-lg shadow-lg">
+            <h3 className="text-lg font-semibold mb-4">Revenue Trends</h3>
+            <Line data={lineData} />
           </div>
         </div>
       </div>

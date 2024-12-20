@@ -3,6 +3,17 @@ const Product = require("../models/Product");
 const router = express.Router();
 const { body, validationResult } = require("express-validator");
 
+// Prevent caching for all routes
+router.use((req, res, next) => {
+  res.setHeader(
+    "Cache-Control",
+    "no-store, no-cache, must-revalidate, proxy-revalidate"
+  );
+  res.setHeader("Pragma", "no-cache");
+  res.setHeader("Expires", "0");
+  next();
+});
+
 // Create a new product
 router.post(
   "/add",
