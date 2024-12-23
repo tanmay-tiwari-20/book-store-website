@@ -4,11 +4,12 @@
   "description": "Backend for the e-commerce website",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js",
-    "build": "cd ../frontend && npm install && npm run build && cp -R ../frontend/dist ./public",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "postinstall": "cd ../frontend && npm install && cd ../backend && npm install", 
+  "build": "cd ../frontend && npm run build && cp -R ../frontend/dist ./public", 
+  "start": "node app.js", 
+  "dev": "nodemon app.js",
+  "test": "echo \"Error: no test specified\" && exit 1"
+},
   "keywords": [
     "e-commerce",
     "backend",
