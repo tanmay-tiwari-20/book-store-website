@@ -17,13 +17,13 @@ const app = express();
 
 // CORS configuration to allow requests from frontend (localhost:5173)
 const corsOptions = {
-  origin: "http://localhost:5173",  // Frontend URL
+  origin: "http://localhost:5173", // Frontend URL
   methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
-  credentials: true,  // Allow cookies, authorization headers, etc.
+  credentials: true, // Allow cookies, authorization headers, etc.
 };
 
 // Middleware
-app.use(cors(corsOptions));  // Enable CORS with the specified options
+app.use(cors(corsOptions)); // Enable CORS with the specified options
 app.use(bodyParser.json()); // Parse JSON bodies
 app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded bodies
 
