@@ -7,7 +7,7 @@
     "start": "node app.js",
     "dev": "nodemon app.js",
     "build": "cd ../frontend && npm install && npm run build && cp -R ../frontend/dist ./public",
-    "postinstall": "npm install --prefix backend && npm install --prefix frontend",
+    "postinstall": "npm install backend && npm install frontend",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
@@ -24,6 +24,7 @@
   "author": "Your Name",
   "license": "ISC",
   "dependencies": {
+    "backend": "^0.0.0",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.3",
@@ -37,7 +38,8 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.8.4",
     "multer": "^1.4.5-lts.1",
-    "nodemailer": "^6.9.16"
+    "nodemailer": "^6.9.16",
+    "sass": "^1.83.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.7"
