@@ -4,8 +4,8 @@
   "description": "Backend for the e-commerce website",
   "main": "app.js",
   "scripts": {
-    "start": "node backend/app.js",
-    "dev": "nodemon backend/app.js",
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "build": "cd ../frontend && npm install && npm run build && cp -R ../frontend/dist ./public",
     "postinstall": "npm install --prefix backend && npm install --prefix frontend",
     "test": "echo \"Error: no test specified\" && exit 1"
