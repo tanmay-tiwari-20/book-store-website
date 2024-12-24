@@ -12,6 +12,9 @@ const AuthContent = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate(); // Initialize navigate
 
+  // Get the base API URL from environment variables
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
   // Handle form field changes
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,8 +28,8 @@ const AuthContent = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const url = isLogin
-      ? "http://localhost:5000/api/auth/login"
-      : "http://localhost:5000/api/auth/signup";
+      ? `${API_BASE_URL}/auth/login`
+      : `${API_BASE_URL}/auth/signup`;
 
     try {
       const response = await axios.post(url, formData);
@@ -49,7 +52,9 @@ const AuthContent = () => {
       // Redirect to homepage
       navigate("/");
     } catch (err) {
-      setError(err.response ? err.response.data.message : "Something went wrong");
+      setError(
+        err.response ? err.response.data.message : "Something went wrong"
+      );
     }
   };
 
