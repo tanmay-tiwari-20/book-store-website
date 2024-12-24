@@ -29,7 +29,7 @@ const ProductPage = () => {
       }
     // eslint-disable-next-line no-unused-vars
     } catch (error) {
-      setErrorMessage("Failed to fetch products. Please try again.");
+      setErrorMessage("Failed to fetch products. Please try again.", error);
     }
   };
 
