@@ -18,7 +18,7 @@ const app = express();
 
 // CORS configuration to allow requests from frontend (localhost:5173)
 const corsOptions = {
-  origin: "https://book-store-website-1-0yi2.onrender.com/", // Frontend URL
+  origin: "https://book-store-website-yiw8.onrender.com/", // Frontend URL
   methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
   credentials: true, // Allow cookies, authorization headers, etc.
 };
