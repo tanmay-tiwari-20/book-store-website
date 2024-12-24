@@ -23,6 +23,10 @@ const corsOptions = {
   credentials: true, // Allow cookies, authorization headers, etc.
 };
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "build", "index.html")); // Adjust the path if needed
+});
+
 // Middleware
 app.use(cors(corsOptions)); // Enable CORS with the specified options
 app.use(bodyParser.json()); // Parse JSON bodies
