@@ -44,7 +44,9 @@ const Header = () => {
             </h1>
           </>
         ) : (
-          <h1 className="font-bold text-lg sm:text-2xl font-inter">Exclusive</h1>
+          <h1 className="font-bold text-lg sm:text-2xl font-inter">
+            Exclusive
+          </h1>
         )}
       </div>
 
@@ -81,14 +83,6 @@ const Header = () => {
           }`}
         >
           About
-        </Link>
-        <Link
-          to="/admin/login"
-          className={`hover:underline ${
-            isActive("/admin/login") ? "font-semibold text-[#DB4444]" : ""
-          }`}
-        >
-          Admin
         </Link>
         <button
           onClick={handleAuthClick}
