@@ -13,23 +13,27 @@ const ProductPage = () => {
   const [editingProductId, setEditingProductId] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
 
+  const API_BASE_URL = import.meta.env.VITE_API_URL;
+
   useEffect(() => {
     fetchProducts();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  
-  const API_BASE_URL = import.meta.env.VITE_API_URL;
+
   const fetchProducts = async () => {
-    // Get the base API URL from environment variables
     try {
       const response = await fetch(`${API_BASE_URL}/api/products`);
-      const data = await response.json();
-      if (data.products) {
-        setProducts(data.products);
+      if (!response.ok) {
+        throw new Error(
+          `Error fetching products: ${response.status} ${response.statusText}`
+        );
       }
-    // eslint-disable-next-line no-unused-vars
+      const data = await response.json();
+      setProducts(data.products || []);
     } catch (error) {
-      setErrorMessage("Failed to fetch products. Please try again.", error);
+      setErrorMessage(
+        error.message || "Failed to fetch products. Please try again."
+      );
     }
   };
 
@@ -54,23 +58,22 @@ const ProductPage = () => {
         body: JSON.stringify(newProduct),
       });
 
-      if (response.ok) {
-        setTitle("");
-        setAuthor("");
-        setIsbn("");
-        setCategory("");
-        setDescription("");
-        setPrice("");
-        setStock("");
-        setImages("");
-        fetchProducts();
-      } else {
+      if (!response.ok) {
         const errorData = await response.json();
-        setErrorMessage(errorData.error || "Error adding product");
+        throw new Error(errorData.error || "Error adding product");
       }
-    // eslint-disable-next-line no-unused-vars
+
+      setTitle("");
+      setAuthor("");
+      setIsbn("");
+      setCategory("");
+      setDescription("");
+      setPrice("");
+      setStock("");
+      setImages("");
+      fetchProducts();
     } catch (error) {
-      setErrorMessage("Network error: Could not add product.");
+      setErrorMessage(error.message || "Network error: Could not add product.");
     }
   };
 
@@ -86,15 +89,20 @@ const ProductPage = () => {
       images: images.split(",").map((url) => url.trim()),
     };
 
-    const response = await fetch(`${API_BASE_URL}/api/products${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(updatedProduct),
-    });
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/products/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedProduct),
+      });
 
-    if (response.ok) {
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Error updating product");
+      }
+
       setEditingProductId(null);
       setTitle("");
       setAuthor("");
@@ -105,16 +113,29 @@ const ProductPage = () => {
       setStock("");
       setImages("");
       fetchProducts();
+    } catch (error) {
+      setErrorMessage(
+        error.message || "Network error: Could not update product."
+      );
     }
   };
 
   const handleDeleteProduct = async (id) => {
-    const response = await fetch(`${API_BASE_URL}/products${id}`, {
-      method: "DELETE",
-    });
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/products/${id}`, {
+        method: "DELETE",
+      });
 
-    if (response.ok) {
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Error deleting product");
+      }
+
       fetchProducts();
+    } catch (error) {
+      setErrorMessage(
+        error.message || "Network error: Could not delete product."
+      );
     }
   };
 
