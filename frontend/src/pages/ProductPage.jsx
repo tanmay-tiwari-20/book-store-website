@@ -16,10 +16,10 @@ const ProductPage = () => {
   useEffect(() => {
     fetchProducts();
   }, []);
-
+  
+  const API_BASE_URL = import.meta.env.REACT_APP_API_URL;
   const fetchProducts = async () => {
     // Get the base API URL from environment variables
-  const API_BASE_URL = process.env.REACT_APP_API_URL;
     try {
       const response = await fetch(`${API_BASE_URL}/products`);
       const data = await response.json();
@@ -44,7 +44,7 @@ const ProductPage = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:5000/api/products/add", {
+      const response = await fetch(`${API_BASE_URL}/products/add`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -83,7 +83,7 @@ const ProductPage = () => {
       images: images.split(",").map((url) => url.trim()),
     };
 
-    const response = await fetch(`http://localhost:5000/api/products/${id}`, {
+    const response = await fetch(`${API_BASE_URL}/products${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -106,7 +106,7 @@ const ProductPage = () => {
   };
 
   const handleDeleteProduct = async (id) => {
-    const response = await fetch(`http://localhost:5000/api/products/${id}`, {
+    const response = await fetch(`${API_BASE_URL}/products${id}`, {
       method: "DELETE",
     });
 

@@ -14,7 +14,7 @@ const AdminLogin = () => {
   };
 
   // Get the base API URL from environment variables
-  const API_BASE_URL = process.env.REACT_APP_API_URL;
+  const API_BASE_URL = import.meta.env.REACT_APP_API_URL;
 
   // Handle form submission
   const handleSubmit = async (e) => {
