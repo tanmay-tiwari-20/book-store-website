@@ -28,9 +28,6 @@ app.use(cors(corsOptions)); // Enable CORS with the specified options
 app.use(bodyParser.json()); // Parse JSON bodies
 app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded bodies
 
-// Serve static files from the frontend build folder (move frontend build to 'public' folder)
-app.use(express.static(path.join(__dirname, "public"))); // Serve static files from 'public'
-
 // Connect to MongoDB
 mongoose
   .connect(process.env.MONGO_URI)
