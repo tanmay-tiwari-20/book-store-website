@@ -13,6 +13,9 @@ const AdminLogin = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  // Get the base API URL from environment variables
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,7 +27,7 @@ const AdminLogin = () => {
 
       // Send login request to the backend
       const response = await axios.post(
-        "http://localhost:5000/api/admin/auth/login", // Full URL to the backend
+        `${API_BASE_URL}/admin/auth/login`, // Full URL to the backend
         formData,
         {
           headers: {

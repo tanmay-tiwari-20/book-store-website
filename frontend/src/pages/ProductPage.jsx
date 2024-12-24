@@ -18,8 +18,10 @@ const ProductPage = () => {
   }, []);
 
   const fetchProducts = async () => {
+    // Get the base API URL from environment variables
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
     try {
-      const response = await fetch("http://localhost:5000/api/products");
+      const response = await fetch(`${API_BASE_URL}/products`);
       const data = await response.json();
       if (data.products) {
         setProducts(data.products);
