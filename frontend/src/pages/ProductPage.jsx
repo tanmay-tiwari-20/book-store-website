@@ -17,23 +17,18 @@ const ProductPage = () => {
 
   useEffect(() => {
     fetchProducts();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchProducts = async () => {
     try {
       const response = await fetch(`${API_BASE_URL}/api/products`);
       if (!response.ok) {
-        throw new Error(
-          `Error fetching products: ${response.status} ${response.statusText}`
-        );
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-      const data = await response.json();
-      setProducts(data.products || []);
+      const data = await response.json(); // Get the product data from the response
+      setProducts(data.products || []); // Set products to the fetched data
     } catch (error) {
-      setErrorMessage(
-        error.message || "Failed to fetch products. Please try again."
-      );
+      setErrorMessage(error.message || "Failed to fetch products. Please try again.");
     }
   };
 
@@ -71,7 +66,7 @@ const ProductPage = () => {
       setPrice("");
       setStock("");
       setImages("");
-      fetchProducts();
+      fetchProducts(); // Refresh the product list after adding a new one
     } catch (error) {
       setErrorMessage(error.message || "Network error: Could not add product.");
     }
@@ -112,11 +107,9 @@ const ProductPage = () => {
       setPrice("");
       setStock("");
       setImages("");
-      fetchProducts();
+      fetchProducts(); // Refresh the product list after updating the product
     } catch (error) {
-      setErrorMessage(
-        error.message || "Network error: Could not update product."
-      );
+      setErrorMessage(error.message || "Network error: Could not update product.");
     }
   };
 
@@ -131,11 +124,9 @@ const ProductPage = () => {
         throw new Error(errorData.error || "Error deleting product");
       }
 
-      fetchProducts();
+      fetchProducts(); // Refresh the product list after deleting a product
     } catch (error) {
-      setErrorMessage(
-        error.message || "Network error: Could not delete product."
-      );
+      setErrorMessage(error.message || "Network error: Could not delete product.");
     }
   };
 
