@@ -82,6 +82,14 @@ const Header = () => {
         >
           About
         </Link>
+        <Link
+          to="/admin/login"
+          className={`hover:underline ${
+            isActive("/admin/login") ? "font-semibold text-[#DB4444]" : ""
+          }`}
+        >
+          Admin
+        </Link>
         <button
           onClick={handleAuthClick}
           className={`hover:underline ${
