@@ -23,8 +23,9 @@ const corsOptions = {
   credentials: true, // Allow cookies, authorization headers, etc.
 };
 
+app.use(express.static(path.join(__dirname, 'dist')));
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html")); // Adjust the path if needed
+  res.sendFile(path.join(__dirname, "dist", "index.html")); // Adjust the path if needed
 });
 
 // Middleware
