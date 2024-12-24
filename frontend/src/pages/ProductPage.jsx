@@ -15,17 +15,19 @@ const ProductPage = () => {
 
   useEffect(() => {
     fetchProducts();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   
-  const API_BASE_URL = import.meta.env.REACT_APP_API_URL;
+  const API_BASE_URL = import.meta.env.VITE_API_URL;
   const fetchProducts = async () => {
     // Get the base API URL from environment variables
     try {
-      const response = await fetch(`${API_BASE_URL}/products`);
+      const response = await fetch(`${API_BASE_URL}/api/products`);
       const data = await response.json();
       if (data.products) {
         setProducts(data.products);
       }
+    // eslint-disable-next-line no-unused-vars
     } catch (error) {
       setErrorMessage("Failed to fetch products. Please try again.");
     }
@@ -44,7 +46,7 @@ const ProductPage = () => {
     };
 
     try {
-      const response = await fetch(`${API_BASE_URL}/products/add`, {
+      const response = await fetch(`${API_BASE_URL}/api/products/add`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -66,6 +68,7 @@ const ProductPage = () => {
         const errorData = await response.json();
         setErrorMessage(errorData.error || "Error adding product");
       }
+    // eslint-disable-next-line no-unused-vars
     } catch (error) {
       setErrorMessage("Network error: Could not add product.");
     }
@@ -83,7 +86,7 @@ const ProductPage = () => {
       images: images.split(",").map((url) => url.trim()),
     };
 
-    const response = await fetch(`${API_BASE_URL}/products${id}`, {
+    const response = await fetch(`${API_BASE_URL}/api/products${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

@@ -13,7 +13,7 @@ const AuthContent = () => {
   const navigate = useNavigate(); // Initialize navigate
 
   // Get the base API URL from environment variables
-  const API_BASE_URL = process.env.REACT_APP_API_URL;
+  const API_BASE_URL = import.meta.env.VITE_API_URL;
 
   // Handle form field changes
   const handleChange = (e) => {
@@ -28,8 +28,8 @@ const AuthContent = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const url = isLogin
-      ? `${API_BASE_URL}/auth/login`
-      : `${API_BASE_URL}/auth/signup`;
+      ? `${API_BASE_URL}/api/auth/login`
+      : `${API_BASE_URL}/api/auth/signup`;
 
     try {
       const response = await axios.post(url, formData);
