@@ -18,15 +18,15 @@ const app = express();
 
 // CORS configuration to allow requests from frontend (localhost:5173)
 const corsOptions = {
-  origin: "https://book-store-website-yiw8.onrender.com/", // Frontend URL
+  origin: "http://localhost:5173", // Frontend URL
   methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
   credentials: true, // Allow cookies, authorization headers, etc.
 };
 
-app.use(express.static(path.join(__dirname, 'dist')));
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "dist", "index.html")); // Adjust the path if needed
-});
+// app.use(express.static(path.join(__dirname, 'dist')));
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "dist", "index.html")); // Adjust the path if needed
+// });
 
 // Middleware
 app.use(cors(corsOptions)); // Enable CORS with the specified options
