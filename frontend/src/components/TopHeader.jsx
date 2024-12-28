@@ -1,4 +1,5 @@
 import { FaChevronDown } from "react-icons/fa";
+import Link from "react-router-dom"
 
 const TopHeader = () => {
   return (
@@ -25,10 +26,12 @@ const TopHeader = () => {
         <p className="underline font-bold text-xs sm:text-sm bg-[#34c759]">
           Shop Now
         </p>
-        <div className="flex items-center gap-1 sm:gap-2 bg-[#34c759]">
-          <p className="text-xs sm:text-sm bg-[#34c759]">English</p>
-          <FaChevronDown className="text-xs sm:text-sm bg-[#34c759]" />
-        </div>
+        <Link to="/admin/login">
+          <div className="flex items-center gap-1 sm:gap-2 bg-[#34c759]">
+            <p className="text-xs sm:text-sm bg-[#34c759]">English</p>
+            <FaChevronDown className="text-xs sm:text-sm bg-[#34c759]" />
+          </div>
+        </Link>
       </div>
     </header>
   );
