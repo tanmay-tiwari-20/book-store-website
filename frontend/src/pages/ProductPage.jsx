@@ -25,15 +25,29 @@ const ProductPage = () => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      const data = await response.json(); // Get the product data from the response
-      setProducts(data.products || []); // Set products to the fetched data
+      const data = await response.json();
+      setProducts(data.products || []); // Handle empty product list
     } catch (error) {
-      setErrorMessage(error.message || "Failed to fetch products. Please try again.");
+      setErrorMessage(
+        error.message || "Failed to fetch products. Please try again."
+      );
     }
   };
 
-  const handleAddProduct = async () => {
-    const newProduct = {
+  const resetForm = () => {
+    setTitle("");
+    setAuthor("");
+    setIsbn("");
+    setCategory("");
+    setDescription("");
+    setPrice("");
+    setStock("");
+    setImages("");
+    setEditingProductId(null);
+  };
+
+  const handleAddOrUpdateProduct = async () => {
+    const productData = {
       title,
       author,
       isbn,
@@ -44,72 +58,32 @@ const ProductPage = () => {
       images: images.split(",").map((url) => url.trim()),
     };
 
+    const url = editingProductId
+      ? `${API_BASE_URL}/api/products/${editingProductId}`
+      : `${API_BASE_URL}/api/products/add`;
+
+    const method = editingProductId ? "PUT" : "POST";
+
     try {
-      const response = await fetch(`${API_BASE_URL}/api/products/add`, {
-        method: "POST",
+      const response = await fetch(url, {
+        method,
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(newProduct),
+        body: JSON.stringify(productData),
       });
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.error || "Error adding product");
+        throw new Error(errorData.error || "Error saving product");
       }
 
-      setTitle("");
-      setAuthor("");
-      setIsbn("");
-      setCategory("");
-      setDescription("");
-      setPrice("");
-      setStock("");
-      setImages("");
-      fetchProducts(); // Refresh the product list after adding a new one
+      resetForm();
+      fetchProducts(); // Refresh the product list
     } catch (error) {
-      setErrorMessage(error.message || "Network error: Could not add product.");
-    }
-  };
-
-  const handleUpdateProduct = async (id) => {
-    const updatedProduct = {
-      title,
-      author,
-      isbn,
-      category,
-      description,
-      price,
-      stock,
-      images: images.split(",").map((url) => url.trim()),
-    };
-
-    try {
-      const response = await fetch(`${API_BASE_URL}/api/products/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updatedProduct),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || "Error updating product");
-      }
-
-      setEditingProductId(null);
-      setTitle("");
-      setAuthor("");
-      setIsbn("");
-      setCategory("");
-      setDescription("");
-      setPrice("");
-      setStock("");
-      setImages("");
-      fetchProducts(); // Refresh the product list after updating the product
-    } catch (error) {
-      setErrorMessage(error.message || "Network error: Could not update product.");
+      setErrorMessage(
+        error.message || "Network error: Could not save product."
+      );
     }
   };
 
@@ -124,9 +98,11 @@ const ProductPage = () => {
         throw new Error(errorData.error || "Error deleting product");
       }
 
-      fetchProducts(); // Refresh the product list after deleting a product
+      fetchProducts(); // Refresh the product list after deletion
     } catch (error) {
-      setErrorMessage(error.message || "Network error: Could not delete product.");
+      setErrorMessage(
+        error.message || "Network error: Could not delete product."
+      );
     }
   };
 
@@ -216,11 +192,7 @@ const ProductPage = () => {
           />
         </div>
         <button
-          onClick={
-            editingProductId
-              ? () => handleUpdateProduct(editingProductId)
-              : handleAddProduct
-          }
+          onClick={handleAddOrUpdateProduct}
           className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
         >
           {editingProductId ? "Update Product" : "Add Product"}
@@ -247,7 +219,7 @@ const ProductPage = () => {
               products.map((product) => (
                 <tr key={product._id} className="hover:bg-gray-100">
                   <td className="border p-2">
-                    {product.images.length > 0 ? (
+                    {product.images && product.images.length > 0 ? (
                       product.images.map((image, index) => (
                         <img
                           key={index}
